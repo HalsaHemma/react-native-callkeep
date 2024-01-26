@@ -1131,11 +1131,19 @@ public class RNCallKeepModule extends ReactContextBaseJavaModule {
             switch (intent.getAction()) {
                 case ACTION_END_CALL:
                     args.putString("callUUID", (String) attributeMap.get(EXTRA_CALL_UUID));
+                     if(attributeMap.get(EXTRA_PAYLOAD) != null) {
+                        WritableMap payloadMap = MapUtils.convertHashMapToWritableMap((HashMap) attributeMap.get(EXTRA_PAYLOAD));
+                        args.putMap("payload", payloadMap);
+                    }
                     sendEventToJS("RNCallKeepPerformEndCallAction", args);
                     break;
                 case ACTION_ANSWER_CALL:
                     args.putString("callUUID", (String) attributeMap.get(EXTRA_CALL_UUID));
-                    args.putBoolean("withVideo", Boolean.valueOf((Boolean) attributeMap.get(EXTRA_HAS_VIDEO)));
+                    args.putString("withVideo", (String) attributeMap.get(EXTRA_HAS_VIDEO));
+                    if(attributeMap.get(EXTRA_PAYLOAD) != null) {
+                        WritableMap payloadMap = MapUtils.convertHashMapToWritableMap((HashMap) attributeMap.get(EXTRA_PAYLOAD));
+                        args.putMap("payload", payloadMap);
+                    }
                     sendEventToJS("RNCallKeepPerformAnswerCallAction", args);
                     break;
                 case ACTION_HOLD_CALL:
