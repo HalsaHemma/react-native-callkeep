@@ -107,7 +107,8 @@ class RNCallKeep {
       supportsHolding,
       supportsDTMF,
       supportsGrouping,
-      supportsUngrouping
+      supportsUngrouping,
+      options
     );
   };
 

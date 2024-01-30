@@ -263,7 +263,9 @@ RCT_EXPORT_METHOD(displayIncomingCall:(NSString *)uuidString
                   supportsHolding:(BOOL)supportsHolding
                   supportsDTMF:(BOOL)supportsDTMF
                   supportsGrouping:(BOOL)supportsGrouping
-                  supportsUngrouping:(BOOL)supportsUngrouping)
+                  supportsUngrouping:(BOOL)supportsUngrouping
+                  payload:(NSDictionary * _Nullable)payload
+                  )
 {
     [RNCallKeep reportNewIncomingCall: uuidString
                                handle: handle
@@ -275,7 +277,7 @@ RCT_EXPORT_METHOD(displayIncomingCall:(NSString *)uuidString
                      supportsGrouping: supportsGrouping
                    supportsUngrouping: supportsUngrouping
                           fromPushKit: NO
-                              payload: nil
+                              payload: payload
                 withCompletionHandler: nil];
 
     NSDictionary *settings = [RNCallKeep getSettings];
