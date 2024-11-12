@@ -414,6 +414,7 @@ public class VoiceConnectionService extends ConnectionService {
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             Context context = getApplicationContext();
+            TelecomManager telecomManager = (TelecomManager) context.getSystemService(context.TELECOM_SERVICE);
             PhoneAccount phoneAccount = null;
 
             try {
